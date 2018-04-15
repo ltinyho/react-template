@@ -1,5 +1,6 @@
 const path             = require('path'); // 引入‘path’，为了在这里使用绝对路径，避免相对路径在不同系统时出现不必要的问题
 const htmlWebpckPlugin = require('html-webpack-plugin');
+const paht             = require('path');
 module.exports         = {
   // 应用入口
   entry: [
@@ -16,8 +17,18 @@ module.exports         = {
     rules: [
       {
         test: /\.(js|jsx)$/,
+        include: paht.resolve(__dirname, '../src'),
         exclude: /node_modules/,
-        use: ['babel-loader'],
+        use: [
+          {
+            loader: 'eslint-loader',
+            options: {
+              formatter: require('eslint-friendly-formatter'),
+            },
+          },
+          {
+            loader: 'babel-loader',
+          }],
       },
     ],
   },

@@ -1,29 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { Route, Link, Redirect, Switch, BrowserRouter as Router } from 'react-router-dom';
 import Lesson from './lesson';
-import { BrowserRouter as Router, Route, Link, Redirect, Switch } from 'react-router-dom';
-import stylted from 'styled-components';
 
-export default class App extends React.Component {
-  state = {
-    title: 'lzh',
-  };
-
-  constructor(props) {
-    super();
-  }
-
-  handChange = (e) => {
-    this.setState({
-      title: e.target.value,
-    });
-  };
+export default class ToToList extends React.Component {
+  state = {};
 
   render() {
     return (
-      <div>
-        <Link to="lesson">lesson</Link>
-        <Route exact path="/lesson" component={Lesson} />
-      </div>
+        <div>
+          <Link to={`/lesson`}>Lesson</Link>
+          <Route path={`/lesson`} component={Lesson}></Route>
+        </div>
     );
   }
 }
+
